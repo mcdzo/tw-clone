@@ -1,0 +1,70 @@
+.modal-form {
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  position: fixed;
+  bottom: 0;
+  top: 0;
+  right: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.new-tw-form {
+  width: 100%;
+  height: 30vh;
+}
+
+.new-tw-form-header {
+  width: 100%;
+  height: 70px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.go-back-button {
+  background: none;
+  color: #fff;
+  border: none;
+  font-size: 22px;
+  margin-left: 20px;
+}
+
+.new-tw-button {
+  background: rgb(8, 164, 255);
+  color: #fff;
+  border: none;
+  padding: 10px 26px;
+  margin-right: 15px;
+  border-radius: 25px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.new-tw-input-container {
+  width: 100%;
+  height: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.new-tw-input {
+  width: 95%;
+  height: 100%;
+  padding-left: 10px;
+  font-size: 20px;
+  border: none;
+  background: #000;
+  color: #fff;
+  overflow-wrap: break-word;
+}
+.new-tw-input:focus {
+  outline: none;
+}

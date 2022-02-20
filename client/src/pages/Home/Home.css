@@ -1,0 +1,65 @@
+.feed {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+}
+.feed-header {
+  width: 100%;
+  height: 70px;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: hsla(0, 0%, 0%, 0.541);
+  backdrop-filter: blur(4px);
+  top: 0px;
+  position: -webkit-sticky;
+  position: sticky;
+}
+
+.feed-header a {
+  text-decoration: none;
+}
+
+.feed-home-link {
+  color: rgb(255, 255, 255);
+  font-size: 20px;
+}
+
+.feed-tw-icon {
+  font-size: 40px;
+  color: rgb(17, 144, 248);
+}
+
+.new-tuit-button {
+  background: rgb(17, 144, 248);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  margin: 10px;
+  border: none;
+  width: 60px;
+  height: 60px;
+  border-radius: 40px;
+  top: 700px;
+  right: 20px;
+  color: #fff;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+@media (min-width: 320px) and (max-width: 575px) {
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+}
+
+@media (min-width: 992px) and (max-width: 1024px) {
+}
