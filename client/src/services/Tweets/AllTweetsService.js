@@ -9,7 +9,7 @@ const AllTweetsService = () => {
     })
     .then((res) => {
       const tuits = res.data.results;
-      console.log(tuits);
+
       return tuits;
     });
 };

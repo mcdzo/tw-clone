@@ -1,7 +1,7 @@
 .tuit {
   width: 100%;
   min-height: 120px;
-  border-bottom: 1px solid rgb(66, 66, 66);
+  border-bottom: 1px solid rgb(53, 47, 47);
   display: flex;
   flex-direction: row;
 }
@@ -11,12 +11,13 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
+  margin-top: 20px;
 }
 .tuit-profile-pic span {
-  width: 60px;
-  height: 60px;
+  width: 45px;
+  height: 45px;
   border-radius: 30px;
   background-color: gray;
 }

@@ -1,8 +1,18 @@
 import "./Tuit.css";
 
+import { useNavigate } from "react-router-dom";
 import { FaRegHeart, FaRegComment, FaShareAltSquare } from "react-icons/fa";
 
+import SingleTwService from "../../services/Tweets/SingleTwService";
+
 const Tuit = ({ tw }) => {
+  const navigate = useNavigate();
+  const onDetail = (id) => {
+    SingleTwService(id).then((tweet) => {
+      window.sessionStorage.setItem("tuit-detail", JSON.stringify(tweet));
+      navigate(`/detail/${id}`);
+    });
+  };
   return (
     <>
       <div className="tuit">
@@ -15,12 +25,12 @@ const Tuit = ({ tw }) => {
               <strong>
                 {tw.name} {tw.surname}
               </strong>
-              <small>{tw.username}</small>
+              <small>@{tw.username}</small>
             </div>
             <div className="tuit-date"> 19 Feb.</div>
           </div>
           <div className="tuit-content">
-            <p>{tw.tuit_content}</p>
+            <p onClick={() => onDetail(tw._id)}>{tw.tuit_content}</p>
           </div>
           <div className="tuit-actions">
             <div className="comment-action">

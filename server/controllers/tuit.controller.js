@@ -31,6 +31,7 @@ const controller = {
       if (err) {
         return res.status(404).send({
           status: "error",
+          value: false,
           message: ">>> no se puedo consegir el tuit",
           err,
         });
@@ -38,6 +39,7 @@ const controller = {
       console.log(result);
       return res.status(200).send({
         status: "success",
+        value: true,
         message: ">>>Tuit encontrado",
         result: result[0],
       });

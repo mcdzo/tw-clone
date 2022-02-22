@@ -1,25 +1,48 @@
 import "./Home.css";
 
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { FaTwitter, FaPlus } from "react-icons/fa";
 
 import Navbar from "../../components/Navbar/Navbar";
 import Tuit from "../../components/Tuit/Tuit";
 import NewTweetForm from "../../components/NewTweetForm/NewTweetForm";
 import AllTweetsService from "../../services/Tweets/AllTweetsService";
+import TweetContext from "../../context/TweetsContext";
+import NewTwService from "../../services/Tweets/NewTwService";
 
 const Home = () => {
+  const user = JSON.parse(window.sessionStorage.getItem("user"));
   const [showForm, setShowForm] = useState(false);
-  const [allTweets, setAllTweets] = useState([]);
+  const { tweets, dispatch } = useContext(TweetContext);
 
   useEffect(() => {
-    AllTweetsService().then((res) => {
-      setAllTweets(res);
+    AllTweetsService().then((tweets) => {
+      dispatch({
+        type: "GET_TWEETS",
+        tweets: tweets,
+      });
     });
-  }, []);
+  }, [dispatch]);
 
   const onShowForm = () => {
     setShowForm(!showForm);
+  };
+  const newTweet = (text) => {
+    const tw = {
+      token: window.sessionStorage.getItem("jwt"),
+      user_id: user._id,
+      name: user.name,
+      username: user.username,
+      tuit_content: text,
+    };
+
+    NewTwService(tw).then((tweet) => {
+      dispatch({
+        type: "ADD_TWEET",
+        tweet: tweet,
+      });
+      setShowForm(!showForm);
+    });
   };
 
   return (
@@ -34,7 +57,8 @@ const Home = () => {
               <FaTwitter className="feed-tw-icon"></FaTwitter>
             </a>
           </header>
-          {allTweets.map((tw) => (
+
+          {tweets.map((tw) => (
             <Tuit key={tw._id} tw={tw} />
           ))}
         </div>
@@ -47,6 +71,7 @@ const Home = () => {
         <NewTweetForm
           showForm={showForm}
           setShowForm={setShowForm}
+          newTweet={newTweet}
         ></NewTweetForm>
       )}
       <Navbar></Navbar>

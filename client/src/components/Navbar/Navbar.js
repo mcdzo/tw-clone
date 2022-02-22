@@ -1,5 +1,6 @@
 import "./Navbar.css";
-import { GoHome, GoSearch, GoBell } from "react-icons/go";
+import { GoHome, GoSearch } from "react-icons/go";
+import { FaRegUser } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
@@ -12,7 +13,7 @@ const Navbar = () => {
         <GoSearch />
       </Link>
       <Link to="/notifications">
-        <GoBell />
+        <FaRegUser />
       </Link>
     </div>
   );
