@@ -226,10 +226,11 @@ const controller = {
   },
   addComment: (req, res) => {
     const params = req.body;
-    console.log(params);
+
     if (!params.user_id || !params.tuit_id) {
-      return res.status(500).send({
+      return res.status(200).send({
         status: "error",
+        value: false,
         message: ">>> Faltan datos por enviar! ",
       });
     } else {
@@ -237,11 +238,11 @@ const controller = {
         if (err) {
           return res.status(404).send({
             status: "error",
+            value: false,
             message: ">>> No se encontró el tuit!!",
           });
         }
 
-        console.log(result[0]);
         Tuit.updateOne(
           { _id: params.tuit_id },
           {
@@ -263,9 +264,10 @@ const controller = {
                 err,
               });
             }
-            console.log(result[0]);
+
             return res.status(200).send({
               result: result[0],
+              value: true,
             });
           });
         });
