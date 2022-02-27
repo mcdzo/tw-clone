@@ -57,10 +57,11 @@ const Home = () => {
               <FaTwitter className="feed-tw-icon"></FaTwitter>
             </a>
           </header>
-
-          {tweets.map((tw) => (
-            <Tuit key={tw._id} tw={tw} />
-          ))}
+          <div className="tweets-list">
+            {tweets.map((tw) => (
+              <Tuit key={tw._id} tw={tw} />
+            ))}
+          </div>
         </div>
       </section>
 

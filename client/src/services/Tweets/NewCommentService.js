@@ -1,7 +1,6 @@
 import axios from "axios";
 
 const NewCommentService = (comment) => {
-  console.log("", comment);
   const url = "http://localhost:3001/api/add-comment";
   const user = JSON.parse(window.sessionStorage.getItem("user"));
   const tuit = JSON.parse(window.sessionStorage.getItem("tuit-detail"));

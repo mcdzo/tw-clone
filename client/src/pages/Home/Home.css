@@ -34,6 +34,12 @@
   color: rgb(17, 144, 248);
 }
 
+.tweets-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column-reverse;
+}
+
 .new-tuit-button {
   background: rgb(17, 144, 248);
   display: flex;

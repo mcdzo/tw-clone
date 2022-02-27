@@ -1,6 +1,5 @@
-import { useState } from "react";
-
 import "./NewCommentForm.css";
+import { useState } from "react";
 
 const NewCommentForm = ({ addComment }) => {
   const [comment, setComment] = useState("");
@@ -15,7 +14,6 @@ const NewCommentForm = ({ addComment }) => {
     if (comment === "") {
       alert("No se puede agregar un comentario vacio");
     } else {
-      console.log(comment);
       addComment(comment);
     }
   };

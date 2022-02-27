@@ -84,3 +84,7 @@
 .like-icon {
   margin: 5px;
 }
+
+.like-icon.red {
+  color: rgb(255, 0, 0);
+}
