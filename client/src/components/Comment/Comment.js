@@ -1,6 +1,29 @@
 import "./Comment.css";
-import { FaRegHeart } from "react-icons/fa";
-const Comment = ({ comment }) => {
+import { FaHeart, FaRegHeart } from "react-icons/fa";
+import { useEffect, useState } from "react";
+import LikeCommentService from "../../services/Tweets/LikeCommentService";
+
+const Comment = ({ c }) => {
+  const user = JSON.parse(window.sessionStorage.getItem("user"));
+
+  const [comment, setComment] = useState(c);
+  const [isLiked, setIsLiked] = useState();
+
+  useEffect(() => {
+    const like = comment.comment_likes.filter((id) => id === user._id);
+
+    if (like.length === 0) {
+      setIsLiked(false);
+    } else {
+      setIsLiked(true);
+    }
+  }, [comment]);
+
+  const onLikeComment = (id) => {
+    LikeCommentService(id).then((data) => {
+      setComment(data.result);
+    });
+  };
   return (
     <div className="comment">
       <div className="comment-profile-pic"></div>
@@ -17,9 +40,15 @@ const Comment = ({ comment }) => {
         </div>
       </div>
       <div className="comment-action">
-        <button>
-          <FaRegHeart />
-        </button>
+        {isLiked ? (
+          <button>
+            <FaHeart className="like-icon red" />
+          </button>
+        ) : (
+          <button onClick={() => onLikeComment(comment._id)}>
+            <FaRegHeart />
+          </button>
+        )}
       </div>
     </div>
   );

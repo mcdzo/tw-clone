@@ -194,8 +194,9 @@ const controller = {
           }
           return res.status(200).send({
             status: "success",
+            value: true,
             message: "Like eliminado con exito",
-            result,
+            result: result[0],
           });
         });
       });
@@ -300,9 +301,22 @@ const controller = {
             },
           }
         ).exec(() => {
-          console.log(comment);
-          return res.status(200).send({
-            result: comment,
+          Tuit.find({ _id: params.tuit_id }).exec((err, result) => {
+            if (err) {
+              return res.status(404).send({
+                status: "error",
+                message: ">>> no se puedo consegir el tuit",
+                err,
+              });
+            }
+            console.log(result[0]);
+            const updatedComments = result[0].comments;
+            const updatedComment = updatedComments.filter(
+              (el) => el.id === params.comment_id
+            );
+            return res.status(200).send({
+              result: updatedComment[0],
+            });
           });
         });
       } else {

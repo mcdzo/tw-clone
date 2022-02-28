@@ -11,6 +11,7 @@ import {
 
 import SingleTwService from "../../services/Tweets/SingleTwService";
 import LikeService from "../../services/Tweets/LikeService";
+import DisLikeService from "../../services/Tweets/DisLikeService";
 
 const Tuit = ({ tw }) => {
   const navigate = useNavigate();
@@ -41,6 +42,12 @@ const Tuit = ({ tw }) => {
     });
   };
 
+  const onDisLike = (id) => {
+    DisLikeService(id).then((data) => {
+      setTweet(data.result);
+    });
+  };
+
   return (
     <>
       <div className="tuit">
@@ -62,14 +69,14 @@ const Tuit = ({ tw }) => {
           </div>
           <div className="tuit-actions">
             <div className="comment-action">
-              <button>
+              <button onClick={() => onDetail(tweet._id)}>
                 <FaRegComment className="comment-icon"></FaRegComment>
               </button>
               {tweet.comments.length}
             </div>
             <div className="like-action">
               {isLiked ? (
-                <button>
+                <button onClick={() => onDisLike(tweet._id)}>
                   <FaHeart className="like-icon red"></FaHeart>
                 </button>
               ) : (
