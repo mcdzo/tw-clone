@@ -46,4 +46,11 @@ router.post(
   tuitController.likeComment
 );
 
+router.post(
+  "/dislike-comment",
+  auth,
+  urlencodedParser,
+  tuitController.disLikeComment
+);
+
 module.exports = router;

@@ -40,7 +40,7 @@ const Detail = () => {
         <NewCommentForm addComment={addComment}></NewCommentForm>
         <div className="tw-detail-comments-box">
           {comments.map((comment) => (
-            <Comment key={comment._id} c={comment}></Comment>
+            <Comment key={comment._id} Comment={comment}></Comment>
           ))}
         </div>
       </section>

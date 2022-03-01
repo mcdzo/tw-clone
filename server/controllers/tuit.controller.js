@@ -329,6 +329,66 @@ const controller = {
       }
     });
   },
+  disLikeComment: (req, res) => {
+    const params = req.body;
+    console.log(params);
+    let validate_user_id;
+    let validate_comment_id;
+    let validate_tuit_id;
+
+    try {
+      validate_user_id = validator.isEmpty(params.user_id);
+      validate_tuit_id = validator.isEmpty(params.comment_id);
+      validate_tuit_id = validator.isEmpty(params.tuit_id);
+
+      if (validate_comment_id || validate_tuit_id || validate_user_id) {
+        console.log(err, "faltan datos por enviar");
+        return res.status(200).send({
+          status: "error",
+          message: ">>>(!) Faltan datos por enviar",
+        });
+      }
+      Tuit.updateOne(
+        { "comments._id": params.comment_id },
+        {
+          $pull: {
+            "comments.$.comment_likes": params.user_id,
+          },
+        }
+      ).exec((err, result) => {
+        if (err) {
+          return res.status(404).send({
+            status: "error",
+            message: ">>> no se puedo consegir el tuit",
+            err,
+          });
+        }
+        Tuit.find({ _id: params.tuit_id }).exec((err, result) => {
+          if (err) {
+            return res.status(404).send({
+              status: "error",
+              message: ">>> no se puedo consegir el tuit",
+              err,
+            });
+          }
+          console.log(result[0]);
+          const updatedComments = result[0].comments;
+          const updatedComment = updatedComments.filter(
+            (el) => el.id === params.comment_id
+          );
+          return res.status(200).send({
+            result: updatedComment[0],
+          });
+        });
+      });
+    } catch (err) {
+      console.log(err, "faltan datos por enviar");
+      return res.status(200).send({
+        status: "error",
+        message: ">>>(!) Faltan datos por enviar",
+      });
+    }
+  },
 };
 
 module.exports = controller;

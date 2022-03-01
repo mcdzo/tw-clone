@@ -2,11 +2,12 @@ import "./Comment.css";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import LikeCommentService from "../../services/Tweets/LikeCommentService";
+import DislikeCommentService from "../../services/Tweets/DislikeCommentService";
 
-const Comment = ({ c }) => {
+const Comment = ({ Comment }) => {
   const user = JSON.parse(window.sessionStorage.getItem("user"));
 
-  const [comment, setComment] = useState(c);
+  const [comment, setComment] = useState(Comment);
   const [isLiked, setIsLiked] = useState();
 
   useEffect(() => {
@@ -21,6 +22,12 @@ const Comment = ({ c }) => {
 
   const onLikeComment = (id) => {
     LikeCommentService(id).then((data) => {
+      setComment(data.result);
+    });
+  };
+
+  const onDislikeComment = (id) => {
+    DislikeCommentService(id).then((data) => {
       setComment(data.result);
     });
   };
@@ -41,7 +48,7 @@ const Comment = ({ c }) => {
       </div>
       <div className="comment-action">
         {isLiked ? (
-          <button>
+          <button onClick={() => onDislikeComment(comment._id)}>
             <FaHeart className="like-icon red" />
           </button>
         ) : (
