@@ -1,0 +1,70 @@
+.profile-page {
+  width: 100%;
+  height: 100%;
+}
+
+.profile-page-header {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.profile-page-header h2 {
+  margin: 0px 25px;
+}
+
+.profile-page-go-back-button {
+  background: none;
+  color: #fff;
+  border: none;
+  font-size: 22px;
+  margin-left: 20px;
+}
+
+.profile-user-info {
+  width: 100%;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+}
+.profile-user-info-row {
+  width: 100%;
+  height: 50%;
+  background-color: rgb(107, 63, 63);
+  margin: 2px 0px;
+}
+
+.profile-section-selector {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-bottom: 1px solid rgb(83, 83, 83);
+}
+
+.profile-tweets-selector,
+.profile-favs-selector {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-tweets-selector button,
+.profile-favs-selector button {
+  width: 100%;
+  height: 100%;
+  color: #ffffff;
+  font-size: 20px;
+  background: #000000;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+}

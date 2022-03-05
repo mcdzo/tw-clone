@@ -53,7 +53,7 @@ const Comment = ({ Comment }) => {
           </button>
         ) : (
           <button onClick={() => onLikeComment(comment._id)}>
-            <FaRegHeart />
+            <FaRegHeart className="like-icon " />
           </button>
         )}
       </div>

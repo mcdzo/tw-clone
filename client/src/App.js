@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 
 import Home from "./pages/Home/Home";
 import Search from "./pages/Search/Search";
-import Notifications from "./pages/Notifications/Notifications";
+import Profile from "./pages/Profile/Profile";
 import Login from "./pages/Login/Login";
 import { TweetContextProvider } from "./context/TweetsContext";
 import Detail from "./pages/Detail/Detail";
@@ -16,10 +16,7 @@ function App() {
           <Route path="/home" element={<Home></Home>}></Route>
           <Route path="/search" element={<Search></Search>}></Route>
           <Route path="/detail/:id" element={<Detail></Detail>}></Route>
-          <Route
-            path="/notifications"
-            element={<Notifications></Notifications>}
-          ></Route>
+          <Route path="/profile/:id" element={<Profile></Profile>}></Route>
           <Route path="/" element={<Login></Login>}></Route>
         </Routes>
       </TweetContextProvider>

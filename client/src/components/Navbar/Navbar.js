@@ -4,6 +4,11 @@ import { FaRegUser } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
+  const user = JSON.parse(window.sessionStorage.getItem("user"));
+
+  const handleProfile = () => {
+    window.sessionStorage.setItem("user-to-see", JSON.stringify(user));
+  };
   return (
     <div className="navbar">
       <Link to="/home">
@@ -12,7 +17,7 @@ const Navbar = () => {
       <Link to="/search">
         <GoSearch />
       </Link>
-      <Link to="/notifications">
+      <Link onClick={handleProfile} to={`/profile/${user._id}`}>
         <FaRegUser />
       </Link>
     </div>
