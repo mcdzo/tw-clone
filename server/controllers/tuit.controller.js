@@ -24,6 +24,21 @@ const controller = {
     });
   },
 
+  userTweets: (req, res) => {
+    console.log(req.body);
+    const params = req.body;
+    try {
+      Tuit.find({ username: params.username }).exec((err, result) => {
+        console.log(result);
+        return res.status(200).send({
+          result: result,
+        });
+      });
+    } catch (err) {
+      console.log(err);
+      return res.status(404).send(err);
+    }
+  },
   singleTuit: (req, res) => {
     const params = req.body;
 

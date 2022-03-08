@@ -24,9 +24,10 @@ const controller = {
   getUser: (req, res) => {
     const params = req.body;
     console.log("acacsacas", params);
-    User.find({ _id: params.id }).exec((err, result) => {
+    User.find({ username: params.username }).exec((err, result) => {
       if (err) {
         return res.status(500).send({
+          value: false,
           status: "error",
           message: ">>>(!) Error al intentar devolver el usuario",
         });
@@ -41,6 +42,7 @@ const controller = {
       };
       console.log(user);
       return res.status(200).send({
+        value: true,
         status: "success",
         user,
       });

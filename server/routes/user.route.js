@@ -34,6 +34,7 @@ router.post("/test", userController.test);
 
 router.post("/new-tuit", auth, urlencodedParser, tuitController.newTuit);
 router.post("/all-tuits", auth, urlencodedParser, tuitController.allTuits);
+router.post("/user-tweets", auth, urlencodedParser, tuitController.userTweets);
 router.post("/single-tuit", auth, urlencodedParser, tuitController.singleTuit);
 router.post("/add-like", auth, urlencodedParser, tuitController.addLike);
 router.post("/dis-like", auth, urlencodedParser, tuitController.disLike);

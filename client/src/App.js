@@ -16,7 +16,10 @@ function App() {
           <Route path="/home" element={<Home></Home>}></Route>
           <Route path="/search" element={<Search></Search>}></Route>
           <Route path="/detail/:id" element={<Detail></Detail>}></Route>
-          <Route path="/profile/:id" element={<Profile></Profile>}></Route>
+          <Route
+            path="/profile/:username"
+            element={<Profile></Profile>}
+          ></Route>
           <Route path="/" element={<Login></Login>}></Route>
         </Routes>
       </TweetContextProvider>
